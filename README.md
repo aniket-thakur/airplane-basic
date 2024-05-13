@@ -26,6 +26,13 @@ Eg: setting up `dotenv`  to store environment variab les. Other could be to setu
  ```
     PORT=3000
  ```
+  Inside the `src/config`, excute the below command on termainal:
+  ```
+  npx sequelize init
+  ```
+  
+  OR 
+
 
   Inside the `src/config` create a `config.json` and paste the below code in it.
 
@@ -60,3 +67,10 @@ If setting up a development environment:
 
 If setting up a test or production environment:
   same as above, but make sure to change the `host` with the hosted db url.
+
+### --------------------------------------------------------------------------------------
+To run the server
+```
+npx run dev
+
+```
