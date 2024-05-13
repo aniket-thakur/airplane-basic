@@ -18,7 +18,12 @@ Eg: setting up `dotenv`  to store environment variab les. Other could be to setu
 
  `services` --> It contains the business logic and interacts with repositories for data from the database.
 
- `utils` --> It contains the helper methods like error classes etc  
+ `utils` --> It contains the helper methods like error classes etc
+
+ TO install the dependencies write the below command in terminal:
+ ```
+  npm install
+ ```  
 
  `NOTE` --> In root directory add `.env` file and add `PORT` of your choice
 
