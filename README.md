@@ -20,7 +20,7 @@ Eg: setting up `dotenv`  to store environment variab les. Other could be to setu
 
  `utils` --> It contains the helper methods like error classes etc  
 
- #################################################################################################################################################################################
+ #################################################################
 
  TO install the dependencies write the below command in terminal:
 
