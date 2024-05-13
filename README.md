@@ -31,7 +31,7 @@ Eg: setting up `dotenv`  to store environment variab les. Other could be to setu
  ```
     PORT=3000
  ```
-  Inside the `src/config`, excute the below command on termainal:
+  Inside the `src`, excute the below command on termainal:
   ```
   npx sequelize init
   ```
