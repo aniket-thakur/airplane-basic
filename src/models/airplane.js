@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull : false
     },
     capacity: {
-      tyep: DataTypes.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull : false
     }
   }, {
