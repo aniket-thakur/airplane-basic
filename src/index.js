@@ -1,5 +1,5 @@
 const express = require('express');
-const { server, logger }  = require('./config');
+const { server, Logger }  = require('./config');
 const apiRoutes = require('./routes');
 const app = express();
 app.use(express.json());
@@ -8,5 +8,5 @@ app.use('/api',apiRoutes);  // whenever a request has '/api' it will redirect it
 
 app.listen(server.PORT , () =>{
     console.log(`Listening to ${server.PORT}`);
-    logger.info('Connection established....','root',{});
+    Logger.info('Connection established....','root',{});
 })

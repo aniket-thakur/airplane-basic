@@ -14,7 +14,11 @@ module.exports = {
         allowNull : false
       },
       capacity: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        validate:{
+          max : 1000,
+          min : 100
+        },
       },
       createdAt: {
         allowNull: false,
