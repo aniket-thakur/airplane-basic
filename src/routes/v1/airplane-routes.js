@@ -9,5 +9,8 @@ router.post('/',
             AirplaneController.createAirplane
         );  // api/v1/airplane/  -> post req
 
+router.get('/',
+    AirplaneController.getAirplanes
+);
 
 module.exports = router;

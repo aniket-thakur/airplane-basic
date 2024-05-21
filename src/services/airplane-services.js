@@ -21,6 +21,19 @@ async function createAirplane(data){
         throw new AppError('cannot create airplane', StatusCodes)
     }
 }
+
+
+async function getAirplanes(){
+    try{
+
+        const airplanes = await airplaneRepository.getAll();
+        return airplanes;
+    }
+    catch(error){
+        throw new AppError("Something went Wrong while fetching the airplanes", StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
 module.exports = {
-    createAirplane
+    createAirplane,
+    getAirplanes
 }
