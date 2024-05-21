@@ -13,4 +13,8 @@ router.get('/',
     AirplaneController.getAirplanes
 );
 
+router.get('/:id',
+        AirplaneController.getAirplanebyID
+)
+
 module.exports = router;

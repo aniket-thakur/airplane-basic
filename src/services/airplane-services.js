@@ -33,7 +33,21 @@ async function getAirplanes(){
         throw new AppError("Something went Wrong while fetching the airplanes", StatusCodes.INTERNAL_SERVER_ERROR);
     }
 }
+
+async function getAirplaneByID(id){
+    try{
+        console.log(id);
+        const airplane  = await airplaneRepository.get(id);
+        console.log(airplane);
+        return airplane;
+    }
+    catch(error){
+        if(error.StatusCode == StatusCodes.NOT_FOUND){
+            throw new AppError("No airplane found of such id", error.statusCode)
+        }
+        throw new AppError("Something went wrong while fetching all the airplanse.", StatusCodes.NOT_FOUND);
+    }
+}
 module.exports = {
-    createAirplane,
-    getAirplanes
+    createAirplane, getAirplanes, getAirplaneByID
 }
