@@ -18,6 +18,10 @@ class CrudRepository{
                 id: data
             }
         });
+        if(!response){
+            console.log(response);
+            throw new AppError('',  StatusCodes.NOT_FOUND);
+        }
         return response;
     
     }
@@ -41,12 +45,15 @@ class CrudRepository{
     
 
     async update(data, id){  // data --> {col, value} like = { lastName: 'Doe' }
-      
         const response = await this.model.update(data, {
             where:{
                 id : id
             }
         })
+        console.log(response)
+        if(!response[0]){
+            throw new AppError("", StatusCodes.NOT_FOUND);
+        }
         return response;
     }
 

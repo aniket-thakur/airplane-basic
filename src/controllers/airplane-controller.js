@@ -22,7 +22,7 @@ async function createAirplane(req, res){
         // ErrorResponse.message  ='Something went wrong while creating airplane (controller)';
         ErrorResponse.error = error
         return res
-            .status(error.StatusCode)
+            .status(error.statusCode)
             .json(ErrorResponse);
     }
 }
@@ -40,7 +40,7 @@ async function getAirplanes(req, res){
     catch(error){
         ErrorResponse.error = error;
         return res 
-                .status(error.StatusCode)
+                .status(error.statusCode)
                 .json(ErrorResponse);
     }
 }
@@ -60,6 +60,42 @@ async function getAirplanebyID(req, res){
                 .json(ErrorResponse)
     }
 }
+
+async function updateAirplane(req, res){
+    try{
+        
+        const airplane = await AirplaneService.updateAirplane({
+            modelNumber: req.body.modelNumber,
+            capacity : req.body.capacity
+        }, req.params.id);
+        SuccessResponse.data = airplane;
+        return res
+                .status(StatusCodes.OK)
+                .json(SuccessResponse)
+    }
+    catch(error){
+        ErrorResponse.error = error;
+        return res  
+                .status(error.statusCode)
+                .json(ErrorResponse)
+    }
+}
+
+async function deleteAirplane(req, res){
+    try{
+        const airplane = await AirplaneService.deleteAirplane(req.params.id);
+        SuccessResponse.data = airplane;
+        return res
+                .status(StatusCodes.OK)
+                .json(SuccessResponse)
+    }
+    catch(error){
+        ErrorResponse.error = error;
+        return res
+                .status(error.statusCode)
+                .json(ErrorResponse)
+    }
+}
 module.exports = {
-    createAirplane, getAirplanes,getAirplanebyID
+    createAirplane, getAirplanes,getAirplanebyID, updateAirplane, deleteAirplane
 }

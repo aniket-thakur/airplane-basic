@@ -42,12 +42,41 @@ async function getAirplaneByID(id){
         return airplane;
     }
     catch(error){
-        if(error.StatusCode == StatusCodes.NOT_FOUND){
+        if(error.statusCode == StatusCodes.NOT_FOUND){
             throw new AppError("No airplane found of such id", error.statusCode)
         }
         throw new AppError("Something went wrong while fetching all the airplanse.", StatusCodes.NOT_FOUND);
     }
 }
+
+async function updateAirplane(data, id){
+    try{
+        const airplane = await airplaneRepository.update(data, id);
+        return airplane;
+    }
+    catch(error){
+        console.log(error)
+        if(error.statusCode == StatusCodes.NOT_FOUND){
+            throw new AppError("No airplane found of such id", error.statusCode);
+        }
+        throw new AppError("Something went wrong while making the update", StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
+
+async function deleteAirplane(id){
+    try{
+        const response = await airplaneRepository.destroy(id);
+        return response;
+    }
+    catch(error){
+        console.log(error.statusCode);
+        console.log(StatusCodes.NOT_FOUND);
+        if(error.statusCode === StatusCodes.NOT_FOUND){
+            throw new AppError("No airplane found of such id", StatusCodes.NOT_FOUND)
+        }
+        throw new AppError("Something went wrong when attempting to delete the recod", StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
 module.exports = {
-    createAirplane, getAirplanes, getAirplaneByID
+    createAirplane, getAirplanes, getAirplaneByID, updateAirplane, deleteAirplane
 }

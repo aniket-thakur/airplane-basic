@@ -15,6 +15,14 @@ router.get('/',
 
 router.get('/:id',
         AirplaneController.getAirplanebyID
-)
+);
+
+router.post('/update/:id',
+    AirplaneController.updateAirplane
+);
+
+router.delete('/:id', 
+    AirplaneController.deleteAirplane
+);
 
 module.exports = router;
