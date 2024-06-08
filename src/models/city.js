@@ -14,11 +14,11 @@ module.exports = (sequelize, DataTypes) => {
       // a city can have multiple airports
       this.hasMany(models.Airport,{
 
-        foreignKey : 'cityID',
-        onDelete : 'cascade',
-        onUpdate: 'cascade'
+        foreignKey : 'cityId',
+        onDelete : 'CASCADE',
+        // onUpdate: 'cascade'
 
-      })
+      });
     }
   }
   City.init({

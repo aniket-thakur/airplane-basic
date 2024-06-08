@@ -12,8 +12,8 @@ module.exports = {
         table : 'Cities',
         field : 'id'
       }, 
-      onDelete : 'cascade',
-      onUpdate : 'cascade'
+      onDelete : 'CASCADE',
+      // onUpdate : 'cascade'
     })
     /**
      * Add altering commands here.
