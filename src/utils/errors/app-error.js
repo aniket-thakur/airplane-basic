@@ -3,7 +3,7 @@ class AppError extends Error{
         /**
          * calling the parent class (Error) constructor and passing the message
          */
-        super(message);    
+        super(message);
         this.explanation = message;
         this.statusCode = statusCode;
     }

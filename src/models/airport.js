@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
         onDelete : 'CASCADE'
       });
 
-    } 
+    }  
   }
   Airport.init({
     name:{

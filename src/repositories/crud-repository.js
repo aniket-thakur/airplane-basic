@@ -30,6 +30,7 @@ class CrudRepository{
         
         const response = await this.model.findByPk(id);
         if(!response){
+            console.log(response)
             throw new AppError('', StatusCodes.NOT_FOUND);
         }
         return response;

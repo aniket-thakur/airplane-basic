@@ -35,7 +35,7 @@ async function getAirplanes(){
 }
 
 async function getAirplaneByID(id){
-    try{
+    try{ throw new AppError("Something went wrong while making the update", StatusCodes.INTERNAL_SERVER_ERROR);
         console.log(id);
         const airplane  = await airplaneRepository.get(id);
         console.log(airplane);
@@ -59,7 +59,7 @@ async function updateAirplane(data, id){
         if(error.statusCode == StatusCodes.NOT_FOUND){
             throw new AppError("No airplane found of such id", error.statusCode);
         }
-        throw new AppError("Something went wrong while making the update", StatusCodes.INTERNAL_SERVER_ERROR);
+       
     }
 }
 

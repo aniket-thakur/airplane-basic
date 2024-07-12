@@ -25,6 +25,61 @@ async function createCity(name){
     }
 }
 
+async function getCity(id){
+    try{
+        const response = await cityRepository.get(id);
+        return response;
+    }
+    catch(error){
+        throw new AppError("No city name present with such id ", StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
+
+async function getAllCities(){
+    try{
+        const response = await cityRepository.getAll();
+        return response
+    }
+    catch(error){
+        throw new AppError("Could not able to fetch. Please try again later!!")
+    }
+}
+
+async function deleteCity(id){
+    try{
+        const response = await cityRepository.destroy(id);
+        return response;
+    }
+    catch(error){
+        console.log(error.statusCode);
+        if(error.statusCode == StatusCodes.NOT_FOUND){
+            throw new AppError("No city found of such id", StatusCodes.NOT_FOUND);
+        }
+        else{
+            throw new AppError("Something went wrong. Please try again later", StatusCodes.INTERNAL_SERVER_ERROR);
+        }
+    }
+}
+
+async function updateCity(data, id){
+    try{
+
+        const response = await  cityRepository.update(data, id);
+        return response;
+    }
+    catch(error){
+        if(error.statusCode == StatusCodes.NOT_FOUND){
+            throw new AppError("No city found of such id", StatusCodes.NOT_FOUND);
+        }
+        else{
+            throw new AppError("Something went wrong. Please try again later", StatusCodes.INTERNAL_SERVER_ERROR);
+        }
+    }
+}
 module.exports = {
-    createCity
+    createCity,
+    getCity,
+    getAllCities,
+    deleteCity,
+    updateCity
 }
