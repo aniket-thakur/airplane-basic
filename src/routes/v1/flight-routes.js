@@ -5,6 +5,7 @@ const {FlightController} = require('../../controllers');
 const router = express.Router();
 
 router.post('/', FlightMiddlewares.validateCreateRequest, FlightController.createFlight);
+router.get('/',FlightController.getAllFlights);
 
 
 
